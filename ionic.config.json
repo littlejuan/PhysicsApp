@@ -1,0 +1,8 @@
+{
+  "name": "physics-app",
+  "app_id": "66ea8bb7",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

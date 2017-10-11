@@ -1,0 +1,97 @@
+<ion-content class="login-content no-scroll" padding>
+  <ion-row class="logo-row">
+    <ion-col></ion-col>
+    <ion-col>
+      <img [@flyInBottomSlow]="in" src="assets/img/logo-physics.png" />
+    </ion-col>
+    <ion-col></ion-col>
+  </ion-row>
+  <div class="login-box">
+    <form [formGroup]="rForm" (ngSubmit)="signIn()">
+      <ion-row>
+        <ion-col>
+          <ion-list [@bounceInBottom]="in" inset>
+            <ion-item>
+              <ion-input 
+                type="email" 
+                autocorrect="off" 
+                autocapitalize="none"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                placeholder="Email" 
+                formControlName="email" 
+                required>
+            </ion-input>
+            </ion-item>            
+            <ion-item>
+              <ion-input 
+                [type]="passwordType" 
+                placeholder="Contraseña" 
+                formControlName="password"
+                minlength="6"
+                clearOnEdit=false
+                required>
+              </ion-input>
+              <button 
+                ion-button 
+                clear 
+                color="placeholder" 
+                type="button" 
+                item-right 
+                (click)="uiPassword()"><ion-icon [name]="eyeType"></ion-icon> 
+              </button>              
+            </ion-item>
+          </ion-list>
+          <button 
+            type="button"
+            [@fadeIn]="in" 
+            ion-button 
+            [navPush]="forgetPage"
+            class="forget-btn" 
+            block 
+            clear>
+              <u><b>¿Olvidaste tu contraseña?</b></u>
+          </button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="signup-col">
+          <button
+            [@fadeIn]="in" 
+            ion-button
+            [disabled] = "!rForm.valid"
+            class="submit-btn" 
+            full
+            type="submit">
+              Ingresar
+            </button>
+          <button 
+            [@fadeIn]="in" 
+            ion-button
+            type="button"
+            [navPush]="signupPage"
+            class="register-btn" 
+            block 
+            clear>
+              <u><b>Crear nueva cuenta</b></u>
+          </button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <img 
+            [@fadeIn]="in" 
+            src="assets/img/facebook.png" 
+            class="social-btn"
+            (click)="signInWithFacebook()">
+          <img 
+            [@fadeIn]="in" 
+            src="assets/img/google.png" 
+            class="social-btn"
+            (click)="signInWithGoogle()">
+        </ion-col>
+      </ion-row>
+    </form>
+  </div>
+</ion-content>
